@@ -6,7 +6,7 @@
 #define ROUNDS 10
 
 uint8_t in[16] = {
-0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x00, 0xff, 0xee, 0xdd, 0xcc, 0xbb, 0xaa, 0x99, 0x88
+  0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x00, 0xff, 0xee, 0xdd, 0xcc, 0xbb, 0xaa, 0x99, 0x88
 };
 
 uint8_t out[16];
@@ -90,16 +90,17 @@ void kuz_encrypt(const uint8_t *in, uint8_t *out, const uint8_t *key) {
 
 
 void main() {
-    struct timeval  tv1, tv2;
-    gettimeofday(&tv1, NULL);
-    for (int i = 0; i < 1000000; i += 1) {
-        kuz_encrypt(in, out, key);
-    }
-    gettimeofday(&tv2, NULL);
-    double t = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
-         (double) (tv2.tv_sec - tv1.tv_sec);
-    printf("%.2f MB/s\n", 16 / t);
-    for (int i = 0; i < 16; i += 1) {
-        printf("%02x", out[i]);
-    }
+  struct timeval tv1, tv2;
+  gettimeofday(&tv1, NULL);
+  for (int i = 0; i < 1000000; i += 1) {
+    kuz_encrypt(in, out, key);
+  }
+  gettimeofday(&tv2, NULL);
+  double t = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
+    (double) (tv2.tv_sec - tv1.tv_sec);
+  printf("%.2f MB/s\n", 16 / t);
+  for (int i = 0; i < 16; i += 1) {
+    printf("%02x", out[i]);
+  }
+  printf("\n");
 }
