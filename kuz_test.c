@@ -26,13 +26,13 @@ const uint8_t key[] = {
 
 #define GETADDR(table, i) ((uint64_t *) &table[((uint32_t) i) * 16])
 
-#define R1(_n, _k) \
-c0 ^= GETADDR(kuz_table, GETBYTE(b0, _n) + _k)[0]; \
-c1 ^= GETADDR(kuz_table, GETBYTE(b0, _n) + _k)[1];
+#define R1(n, k) \
+c0 ^= GETADDR(kuz_table, GETBYTE(b0, n) + k)[0]; \
+c1 ^= GETADDR(kuz_table, GETBYTE(b0, n) + k)[1];
 
-#define R2(_n, _k) \
-c0 ^= GETADDR(kuz_table, GETBYTE(b1, _n) + _k)[0]; \
-c1 ^= GETADDR(kuz_table, GETBYTE(b1, _n) + _k)[1];
+#define R2(n, k) \
+c0 ^= GETADDR(kuz_table, GETBYTE(b1, n) + k)[0]; \
+c1 ^= GETADDR(kuz_table, GETBYTE(b1, n) + k)[1];
 
 #define GETBYTE(x, n) (((x) >> (8*n)) & 0xff)
 
