@@ -34,7 +34,7 @@ c1 ^= GETADDR(kuz_table, GETBYTE(b0, n) + k)[1];
 c0 ^= GETADDR(kuz_table, GETBYTE(b1, n) + k)[0]; \
 c1 ^= GETADDR(kuz_table, GETBYTE(b1, n) + k)[1];
 
-#define GETBYTE(x, n) (((x) >> (8*n)) & 0xff)
+#define GETBYTE(x, n) (((x) >> (8 * (n))) & 0xff)
 
 #define ROUND(i) \
 c0 = GETADDR(kuz_table, GETBYTE(b0, 0))[0]; \
@@ -73,7 +73,6 @@ void kuz_encrypt(const uint8_t *in, uint8_t *out, const uint8_t *key) {
   ((uint64_t *) out)[0] = b0;
   ((uint64_t *) out)[1] = b1;
 }
-
 
 void main() {
   struct timeval tv1, tv2;
