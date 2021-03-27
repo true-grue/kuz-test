@@ -70,22 +70,8 @@ void kuz_encrypt(const uint8_t *in, uint8_t *out, const uint8_t *key) {
   ROUND(7)
   ROUND(8)
   ROUND(9)
-  out[0] = GETBYTE(b0, 0);
-  out[1] = GETBYTE(b0, 1);
-  out[2] = GETBYTE(b0, 2);
-  out[3] = GETBYTE(b0, 3);
-  out[4] = GETBYTE(b0, 4);
-  out[5] = GETBYTE(b0, 5);
-  out[6] = GETBYTE(b0, 6);
-  out[7] = GETBYTE(b0, 7);
-  out[8] = GETBYTE(b1, 0);
-  out[9] = GETBYTE(b1, 1);
-  out[10] = GETBYTE(b1, 2);
-  out[11] = GETBYTE(b1, 3);
-  out[12] = GETBYTE(b1, 4);
-  out[13] = GETBYTE(b1, 5);
-  out[14] = GETBYTE(b1, 6);
-  out[15] = GETBYTE(b1, 7);
+  ((uint64_t *) out)[0] = b0;
+  ((uint64_t *) out)[1] = b1;
 }
 
 
